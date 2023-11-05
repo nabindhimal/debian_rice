@@ -1,9 +1,9 @@
 #!/bin/sh
 
-
+sudo apt update
 
 # Installing xorg display server
-sudo apt install -y xorg xserver-xorg xbacklight xbindkeys xvkbd xinput git 
+sudo apt install -y xorg xserver-xorg xbacklight xbindkeys xvkbd xinput git parcellite
 
 # PACKAGE INCLUDES build-essential.
 sudo apt install -y build-essential
