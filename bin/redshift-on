@@ -1,0 +1,3 @@
+#! /bin/sh
+redshift -m randr -P -O 3900
+notify-send "Redshift" "Temperature color: 3900"

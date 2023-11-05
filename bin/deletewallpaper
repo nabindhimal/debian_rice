@@ -1,0 +1,5 @@
+#!/bin/sh
+
+\cat ~/currentwallpaper.txt | xargs trash-put && notify-send "Wallpaper Deleted" || notify-send "Couldn't delete wallpaper"
+
+

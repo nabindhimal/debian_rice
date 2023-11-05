@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# echo "What wallpappers do you want?" | cowsay | lolcat
+# read wall
+
+mkdir /tmp/wallpappers 2>/dev/null
+cd /tmp/wallpappers/$1 || mkdir /tmp/wallpappers/$1 && cd /tmp/wallpappers/$1
+
+notify-send " Downloading wallpappers..."
+for i in $(seq 1 3);
+do
+  picture=$(curl https://wallhaven.cc/api/v1/search\?atleast\=1920x1080\&q\=$1\&page\=$i | jq '.' | grep '"path"' | cut -d : -f 2,3 | awk -F ',' '{print $1}' | sed 's/"//g')
+  wget -nc -nv $picture
+done
+notify-send "  Download Finished!"
+

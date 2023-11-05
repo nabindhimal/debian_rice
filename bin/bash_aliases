@@ -1,0 +1,50 @@
+
+# Aliases
+alias qr='qtile cmd-obj -o cmd -f reload_config'
+alias ..='cd ..' 
+alias ...='cd ../..' 
+alias gcf='cd $HOME/.config'
+alias gdl='cd $HOME/Downloads'
+alias install='sudo apt install'
+alias update='sudo apt update'
+alias upgrade='sudo apt upgrade'
+alias uplist='nala list --upgradable'
+alias remove='sudo apt autoremove'
+alias purge='sudo apt remove --purge'
+alias uninstall='sudo apt remove'
+alias l='exa -ll --header --icons --color=always --group-directories-first'
+alias ll='exa -la --header --icons --color=always --group-directories-first'
+alias ls='exa'
+alias df='df -h'
+alias free='free -h'
+alias i='sudo nala install'
+alias u='sudo nala update'
+alias ug='sudo nala upgrade'
+alias p='sudo nala purge'
+alias windows='sudo mount /dev/nvme0n1p3 /mnt/windows/'
+alias updates='apt-show-versions -u -b'
+
+# Dotfiles & Files
+
+alias reload='source ~/.bashrc'
+alias v="nvim"
+alias vv="nvim ~/.config/nvim/init.vim"
+alias gc="git clone"
+alias status="systemctl --type=service --state=running"
+alias dns="nmcli dev show | grep 'IP4.DNS'"
+alias nv="nvim"
+alias john="/home/mennnk/john/run/john"
+
+# Dunst
+alias hi="notify-send 'Hi there!' 'Welcome to my dk desktop! ' -i ''"
+
+
+# Add Color
+alias egrep='grep --color=auto' 
+
+
+
+alias cls='clear'
+alias s='speedtest-cli'
+alias cat='bat'
+

@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sudo apt autoremove
+sudo du -sh /var/cache/apt
+sudo apt autoclean
+sudo apt clean
+
+journalctl --disk-usage -q
+sudo journalctl --vacuum-time=3d
+
+du -sh ~/.cache/thumbnails
+rm -rf ~/.cache/thumbnails/*

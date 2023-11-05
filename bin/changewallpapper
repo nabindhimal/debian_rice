@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# Set the full path to the directory containing your wallpapers
+wallpaper_dir="$HOME/Pictures/Wallpappers"
+
+# Find a random wallpaper from the specified directory
+wallpaper=$(find "$wallpaper_dir" -type f \( -name "*.jpg" -o -name "*.png" \) | shuf -n 1)
+
+# Set the full path to xwallpaper and wal
+xwallpaper_cmd="/usr/bin/xwallpaper"  # Replace with the actual path
+wal_cmd="$HOME/.local/bin/wal"                # Replace with the actual path
+
+# Change the wallpaper using xwallpaper
+"$xwallpaper_cmd" --zoom "$wallpaper"
+
+"$wal_cmd" -c
+
+# Generate a color scheme using wal
+"$wal_cmd" -i "$wallpaper"
+
+echo "$wallpaper" > "$HOME/currentwallpaper.txt"
+
+# xdotool key "Super+F5"
+
+# case $1 in
+# dwm)
+# 	"$xwallpaper_cmd" --zoom "$wallpaper"
+# 	"$wal_cmd" -i "$wallpapper"
+# 	;;
+# *)
+# 	"$xwallpaper_cmd" --zoom "$wallpaper"
+# 	"$wal_cmd" -c
+# 	"$wal_cmd" -i "$wallpapper"
+# 	;;
+# esac
+
+
+

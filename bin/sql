@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# if [ $# -ne 1 ];
+	# echo "Usage: $0 <start/stop>" | cowsay
+	# exit 1
+# then
+
+# if [ $1 == "start" ];
+	# docker start f0afab33b86a
+	# docker exec -it f0afab33b86a /bin/bash
+# then
+
+# if [ $1 == "stop" ];
+	# docker stop f0afab33b86a
+# then
+
+case $1 in
+start)
+	docker start f0afab33b86a
+	docker exec -it f0afab33b86a /bin/bash
+	;;
+stop)
+	docker stop f0afab33b86a
+	;;
+reconnect)
+	docker exec -it f0afab33b86a /bin/bash
+	;;
+*)
+	echo "Usage: $0 <start/stop>" | cowsay | lolcat
+	exit 1
+esac
+	

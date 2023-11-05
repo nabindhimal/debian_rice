@@ -1,0 +1,10 @@
+#!/bin/bash
+
+case $1 in
+next)
+	/usr/bin/mpc -h localhost -p 6565 next
+	;;
+toggle)
+	/usr/bin/mpc -h localhost -p 6565 toggle
+	;;
+esac
