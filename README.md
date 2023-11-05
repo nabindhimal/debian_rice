@@ -1,3 +1,3 @@
 # debian_rice
 
-![Image Alt Text](image_url)
+![Image Alt Text](https://github.com/nabindhimal/debian_rice/blob/main/debian_rice.png)
