@@ -36,7 +36,7 @@ sudo apt install -y lxappearance
 sudo apt install -y firefox-esr
 
 # Installing other required tools
-sudo apt install -y nala newsboat mpc mpd mpv ncmpcpp xwallpaper python3 vim nvim evince pdfarranger eog gnome-screenshot light volumeicon exa 
+sudo apt install -y nala newsboat mpc mpd mpv ncmpcpp xwallpaper python3 vim neovim-runtime evince pdfarranger eog gnome-screenshot light volumeicon exa 
 
 # Setting up mpv for playing youtube videos	
 sudo wget https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -O /usr/local/bin/yt-dlp
@@ -58,34 +58,9 @@ sudo apt install -y lightdm lightdm-gtk-greeter-settings
 sudo systemctl enable lightdm
 
 
+# Installing Fonts
 
-# Installing Nerd Fonts
-
-sudo apt install unzip -y
-
-mkdir -p ~/.local/share/fonts
-
-cd /tmp
-fonts=( 
-"CascadiaCode"
-"FiraCode" 
-"Go-Mono" 
-"Hack"  
-"JetBrainsMono" 
-"Meslo"
-"Mononoki" 
-"RobotoMono" 
-"SourceCodePro" 
-"UbuntuMono"
-)
-
-for font in ${fonts[@]}
-do
-    wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/$font.zip
-	unzip $font.zip -d $HOME/.local/share/fonts/$font/
-    rm $font.zip
-done
-fc-cache
+./install_fonts.sh
 
 
 # Copying bashrc and alias files
@@ -119,36 +94,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # Qtile installation
 
-# Remove the EXTERNALLY-MANAGED file so pip works again
-sudo rm /usr/lib/python3.11/EXTERNALLY-MANAGED
-
-# Dependencies
-sudo apt install -y python3-full python3-pip libpangocairo-1.0-0 python3-cffi python3-xcffib sxhkd
-
-# Install cairocffi using pip
-pip install --no-cache-dir cairocffi
-
-# Install Qtile
-pip3 install qtile
-
-# Install psutil
-pip install psutil
-
-# Adding qtile.desktop to Lightdm xsessions directory
-cat > ./temp << "EOF"
-[Desktop Entry]
-Name=Qtile
-Comment=Qtile Session
-Type=Application
-Keywords=wm;tiling
-EOF
-sudo cp ./temp /usr/share/xsessions/qtile.desktop;rm ./temp
-u=$USER
-sudo echo "Exec=/home/$u/.local/bin/qtile start" | sudo tee -a /usr/share/xsessions/qtile.desktop
-
-
-
-
+./install_qtile.sh
 
 
 # Downloading and Setting up the config files

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+song=$(/usr/bin/mpc -h localhost -p 6565 | head -n 1)
+
+notify-send "$song" -u low
