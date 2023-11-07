@@ -67,9 +67,9 @@ sudo systemctl enable lightdm
 sudo cp bin/bashrc ~/.bashrc
 sudo cp bash_aliases ~/.bash_aliases
 sudo cp inputrc ~/.inputrc
-sudo mv bin/nvim /usr/bin/
+
 sudo mv bin/bat /usr/bin
-sudo mv bin/latexrun /usr/local/bin
+
 sudo mv bin/linkhandler /usr/local/bin
 mkdir ~/Music
 mkdir -P ~/Pictures/Wallpappers
@@ -79,15 +79,6 @@ mv bin ~/bin
 
 
 
-# Latex Setup
-sudo apt-get install -y texlive-full
-sudo apt install -y zathura
-
-
-
-# Neovim plugin setup
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 
 
@@ -99,6 +90,7 @@ sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.
 
 # Downloading and Setting up the config files
 cd ~/Downloads
+sudo rm -r ~/.config
 git clone https://github.com/nabindhimal/configs
 mv configs ~/.config
 
