@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# # query=$(echo -e "$list" | rofi -dmenu -i)
+# query=$(rofi -dmenu -p "Movie Name:")
+
+# # # query=$(printf '%s' "$*" | tr ' ' '+' )
+# movie=$(curl -s https://1337x.to/search/$query/1/ | grep -Eo "torrent\/[0-9]{7}\/[a-zA-Z0-9?%-]*/" | head -n 1)
+# magnet=$(curl -s https://1337x.to/$movie | grep -Po "magnet:\?xt=urn:btih:[a-zA-Z0-9]*" | head -n 1)
+
+
+# # action=$(echo -e "Watch\nDownload" | rofi -dmenu -i)
+
+
+# # echo $magnet
+
+# # if [ "$action" == "Watch" ]; then
+# # 	notify_send "Start
+# # 	peerflix $
+
+
+
+
+
+query=$(rofi -dmenu -p "Movie Name:")
+if [ -z "$query" ]; then
+    notify-send "No movie name entered. Exiting." -u low
+    exit 1
+fi
+query_1=$(echo "$query" | tr ' ' '+')
+# query_with_quotes="\"$query\""
+
+movie=$(curl -s "https://1337x.to/search/$query_1/1/" | grep -Eo "torrent/[0-9]{7}/[a-zA-Z0-9?%-]*/" | head -n 1)
+if [ -z "$movie" ]; then
+    notify-send "No torrents found for '$query'." -u low
+    exit 1
+fi
+
+magnet=$(curl -s "https://1337x.to/$movie" | grep -Po "magnet:\?xt=urn:btih:[a-zA-Z0-9]*" | head -n 1)
+if [ -z "$magnet" ]; then
+    notify-send "No magnet link found for '$query'." -u low
+    exit 1
+fi
+
+notify-send "Stream started for $magnet. This could take some time to launch. Please wait!" -u low
+peerflix "$magnet" --mpv
+notify-send Exiting!! -u low

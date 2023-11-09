@@ -1,0 +1,17 @@
+#!/bin/bash
+
+netstatus=$(sudo virsh net-list --all | grep default | awk '{print $2}')
+
+if [ "$netstatus" != "active" ]; then
+    sudo virsh net-start default
+fi
+
+list=$(sudo virsh list --all | cut -b 7- | sed 's/........$//' | tail -n +3 | sed 's/ *$//g')
+
+chosen=$(echo -e "$list" | rofi -dmenu -i)
+
+if [ -n "$chosen" ]; then
+    sudo virsh start "$chosen"
+	virt-manager
+fi
+

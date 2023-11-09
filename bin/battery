@@ -1,0 +1,4 @@
+#!/bin/sh
+
+battr=$(acpi | head -n 1)
+notify-send "$battr" -u low

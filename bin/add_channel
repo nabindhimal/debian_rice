@@ -1,0 +1,7 @@
+#!/bin/sh
+
+url=$1
+
+channel=$(wget -qO- $url | tr "," "\n" | grep '/videos"$' | sed -n 's/.*\/channel\/\([^"]*\)\/videos".*/\1/p')
+
+echo "https://www.youtube.com/feeds/videos.xml?channel_id=$channel" >> ~/.config/newsboat/urls

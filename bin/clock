@@ -1,0 +1,10 @@
+#!/bin/sh
+
+while true; do
+	clear
+	date | awk -F' ' '{print "       " $1 " " $2 " " $3 " " $7}'
+	date | awk -F' ' '{print $5 "  " $4}' | figlet -f big
+	sleep 1
+done
+
+
