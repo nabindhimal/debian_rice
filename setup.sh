@@ -1,7 +1,13 @@
 #!/bin/sh
 
+greeting() {
+	figlet -f big "DEBIAN"
+}
+
 sudo apt update
-sudo apt install figlet
+sudo apt install -y figlet
+
+greeting
 
 # Installing xorg display server
 sudo apt install -y xorg xserver-xorg xbacklight xbindkeys xvkbd xinput git parcellite

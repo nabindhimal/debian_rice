@@ -1,16 +1,33 @@
-#!/bin/sh
+#!/bin/bash
 
-# echo "What wallpappers do you want?" | cowsay | lolcat
-# read wall
+mkdir -p /tmp/wallpapers 2>/dev/null
+cd /tmp/wallpapers/$1 || mkdir -p /tmp/wallpapers/$1 && cd /tmp/wallpapers/$1
 
-mkdir /tmp/wallpappers 2>/dev/null
-cd /tmp/wallpappers/$1 || mkdir /tmp/wallpappers/$1 && cd /tmp/wallpappers/$1
+notify-send " Downloading wallpapers..." -u low
 
-notify-send " Downloading wallpappers..."
-for i in $(seq 1 3);
-do
-  picture=$(curl https://wallhaven.cc/api/v1/search\?atleast\=1920x1080\&q\=$1\&page\=$i | jq '.' | grep '"path"' | cut -d : -f 2,3 | awk -F ',' '{print $1}' | sed 's/"//g')
-  wget -nc -nv $picture
+download_failed=0  # Variable to track download failures
+
+for i in $(seq 1 3); do
+    picture=$(curl "https://wallhaven.cc/api/v1/search?atleast=1920x1080&q=$1&page=$i" | jq '.' | grep '"path"' | cut -d : -f 2,3 | awk -F ',' '{print $1}' | sed 's/"//g')
+    wget -nc -nv $picture || download_failed=1  # Set flag if download fails
 done
-notify-send "  Download Finished!"
+
+if [ $download_failed -eq 1 ]; then
+    notify-send "Couldn't download wallpapers!" -u low  # Shows if any download failed
+else
+    notify-send " Download Finished!" -u low  # Notifies when the download process is completed
+fi
+
+cd /tmp/wallpapers/$1
+eog *
+
+chosen=$(echo -e "Yes\nNo" | rofi -dmenu -i -p "Would you like to move the wallpapers? " ) 
+
+if [ "$chosen" == "Yes" ]; then
+    mv * ~/Pictures/Wallpapers
+fi
+
+if [ "$chosen" == "No" ]; then
+    exit 1
+fi
 
