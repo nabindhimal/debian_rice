@@ -1,2 +1,9 @@
 set completion-ignore-case on
+set show-all-if-ambiguous on
+set editing-mode vi
+set enable-bracketed-paste On
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+
 
