@@ -53,14 +53,16 @@ function dimensions() {
 	LINES=$(echo -e "$1" | wc -l)
 	((WIDTH += $2))
 }
+
 function rofi_cmd() {
-	rofi -dmenu -i -location "$LOCATION" -yoffset "$Y_AXIS" -xoffset "$X_AXIS" $1 \
-		-theme "$RASI_DIR" -theme-str '
-		window{width: '"$((WIDTH / 2))"'em;}
-		listview{lines: '"$LINES"';}
-		textbox-prompt-colon{str:"'"$PROMPT"':";}
-		'"$2"''
+    rofi -dmenu -i -theme-str 'window { width: 600px; height: 600px; }' -lines 12
+        
 }
+
+
+
+
+
 function change_wireless_interface() {
 	{ [[ ${#WIRELESS_INTERFACES[@]} -eq "2" ]] && { [[ $WLAN_INT -eq "0" ]] && WLAN_INT=1 || WLAN_INT=0; }; } || {
 		LIST_WLAN_INT=""
