@@ -72,9 +72,6 @@ sudo cp bin/bashrc ~/.bashrc
 sudo cp bash_aliases ~/.bash_aliases
 sudo cp inputrc ~/.inputrc
 
-sudo mv bin/bat /usr/bin
-
-sudo mv bin/linkhandler /usr/local/bin
 mkdir -P ~/Pictures/Wallpappers
 mv bin/wall.png ~/Pictures/Wallpappers
 mv bin/zep.jpg ~/Pictures/Wallpappers
