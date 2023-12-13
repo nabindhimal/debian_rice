@@ -11,7 +11,6 @@ list=$(sudo virsh list --all | cut -b 7- | sed 's/........$//' | tail -n +3 | se
 chosen=$(echo -e "$list" | rofi -dmenu -i)
 
 if [ -n "$chosen" ]; then
-    sudo virsh start "$chosen"
-	virt-manager
+    sudo virsh start "$chosen" && virt-viewer --connect qemu:///system --domain-name "$chosen"
 fi
 

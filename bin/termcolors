@@ -1,0 +1,14 @@
+#!/bin/sh
+
+wallpaper_dir="/home/mennnk/Pictures/Wallpappers"
+
+while true
+do
+	wallpaper=$(find "$wallpaper_dir" -type f \( -name "*.jpg" -o -name "*.png" \) | shuf -n 1)
+	wal_cmd="/usr/local/bin/wal"        
+	"$wal_cmd" -c
+	"$wal_cmd" -i "$wallpaper"
+	sleep 33
+done
+
+

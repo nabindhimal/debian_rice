@@ -16,17 +16,17 @@
 
 case $1 in
 start)
-	docker start f0afab33b86a
-	docker exec -it f0afab33b86a /bin/bash
+	docker start b6d0812dbffb
+	docker exec -it b6d0812dbffb /bin/bash
 	;;
 stop)
-	docker stop f0afab33b86a
+	docker stop b6d0812dbffb
 	;;
 reconnect)
-	docker exec -it f0afab33b86a /bin/bash
+	docker exec -it b6d0812dbffb /bin/bash
 	;;
 *)
-	echo "Usage: $0 <start/stop>" | cowsay | lolcat
+	echo "Usage: $0 <start/stop>" | cowsay 
 	exit 1
 esac
 	

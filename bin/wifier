@@ -1,0 +1,6 @@
+#!/bin/sh
+
+w=$(nmcli | grep wlp0s20f3 | head -n 1)
+
+notify-send "$w" -u low
+
