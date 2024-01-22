@@ -1,15 +1,22 @@
 #!/bin/bash
 
-chosen=$(echo -e "Dark\nColors" | rofi -dmenu -i)
+chosen=$(echo -e "Dark\nColors\nNoBar\nSimple" | rofi -dmenu -i)
 
 if [[ $chosen = "Dark" ]]; then
 	cp /home/mennnk/.config/qtile/schemes/config.py.dark /home/mennnk/.config/qtile/config.py
-	# qtile cmd-obj -o cmd -f reload_config
 	xwallpaper --zoom /home/mennnk/Pictures/Wallpappers/dark.jpg
 	xdotool keydown Super keydown Shift keydown r keyup r keyup Shift keyup Super
 elif [[ $chosen = "Colors" ]]; then
 	cp /home/mennnk/.config/qtile/schemes/config.py.colors /home/mennnk/.config/qtile/config.py
-	# qtile cmd-obj -o cmd -f reload_config
-	xwallpaper --zoom /home/mennnk/Pictures/Wallpappers/pink.png
+	xwallpaper --zoom /home/mennnk/Pictures/Wallpappers/aaaa.jpg
+	xdotool keydown Super keydown Shift keydown r keyup r keyup Shift keyup Super
+elif [[ $chosen = "NoBar" ]]; then
+	cp /home/mennnk/.config/qtile/schemes/config.py.nobar /home/mennnk/.config/qtile/config.py
+	xwallpaper --zoom /home/mennnk/Pictures/Wallpappers/red.png
+	xdotool keydown Super keydown Shift keydown r keyup r keyup Shift keyup Super
+elif [[ $chosen = "Simple" ]]; then
+	cp /home/mennnk/.config/qtile/schemes/config.py.simple /home/mennnk/.config/qtile/config.py
+	xwallpaper --zoom /home/mennnk/Pictures/Wallpappers/sinto.jpg
 	xdotool keydown Super keydown Shift keydown r keyup r keyup Shift keyup Super
 fi
+
