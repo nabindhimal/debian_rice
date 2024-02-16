@@ -1,0 +1,19 @@
+#!/bin/sh
+
+send_notification() {
+	brightness=$(brightnessctl g)
+	brightness_percentage=$(((brightness * 100) / 96000))
+	dunstify -a "changebrightness" -u low -r "9993" -h int:value:"$brightness_percentage" -i "brightness_percentage-$1" "Brightness: ${brightness_percentage}%" -t 2000
+}
+
+case $1 in
+up)
+	brightnessctl s +10%
+	send_notification $1
+
+	;;
+down)
+	brightnessctl s 10%-
+	send_notification $1
+	;;
+esac
