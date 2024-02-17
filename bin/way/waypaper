@@ -149,4 +149,4 @@ element-text {
 }
 EOF
 
-"$xwallpaper_cmd" --image "$wallpaper" -o eDP-1 -m tile
+"$xwallpaper_cmd" --image "$wallpaper" -m fill
