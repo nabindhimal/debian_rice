@@ -4,19 +4,24 @@
 
 stty -ixon # Disables ctrl-s and ctrl-q (Used To Pause Term) 
 
+
+# Prevent duplicate entries in the history
+export HISTCONTROL=ignoredups
+
 export HISTSIZE=20000 
 export PATH="~/bin:$PATH"
 export PATH="~/.local/bin:$PATH"
 export VISUAL=nvim;
 export EDITOR=nvim;
 export PATH="/home/mennnk/john/run:$PATH"
+# export PATH="/home/mennnk/dev/anaconda3/bin:$PATH"  # commented out by conda initialize
 
 # Check the window size after each command and, if necessary, update the values of LINES and COLUMNS
 shopt -s checkwinsize
 
 # Causes bash to append to history instead of overwriting it so if you start a new terminal, you have old session history
 shopt -s histappend
-PROMPT_COMMAND='history -a'
+PROMPT_COMMAND='history -a; history -n'
 
 # PS1 Customization
 PS1="[\[\e[31m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[33m\]\h\[\e[m\]] \W \$  " 
@@ -30,6 +35,8 @@ PS1="[\[\e[31m\]\u\[\e[m\]\[\e[36m\]@\[\e[m\]\[\e[33m\]\h\[\e[m\]] \W \$  "
     fi
 
 
+
+complete -F _apt i
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like
@@ -49,7 +56,23 @@ if [[ $iatest -gt 0 ]]; then bind "set completion-ignore-case on"; fi
 
 
 
-#. "$HOME/.cargo/env"
+. "$HOME/.cargo/env"
 
 fortune | cowsay
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/mennnk/dev/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/mennnk/dev/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/mennnk/dev/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/mennnk/dev/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 

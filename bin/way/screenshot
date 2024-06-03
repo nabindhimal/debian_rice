@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Define the folder to store screenshots
+screenshot_folder="$HOME/Pictures/Screenshots/grim"
+
+
+# Generate a timestamped filename
+filename="$screenshot_folder/screenshot_$(date +"%Y%m%d_%H%M%S").png"
+
+# Take the screenshot using slurp and grim
+slurp | grim -g - "$filename"
+
+# Optionally, you can notify the user that the screenshot has been taken
+notify-send "Screenshot taken and saved as: $filename"
+
