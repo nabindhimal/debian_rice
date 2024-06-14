@@ -1,5 +1,6 @@
 
 # Aliases
+alias rm = 'rm -i'
 alias qr='qtile cmd-obj -o cmd -f reload_config'
 alias ..='cd ..' 
 alias ...='cd ../..' 
