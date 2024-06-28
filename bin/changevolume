@@ -25,4 +25,8 @@ mute)
 		send_notification up
 	fi
 	;;
+micmute)
+  dunstify -i volume-mute -a "microphone" -t 2000 -r 9993 -u low `amixer set Capture toggle | grep 100 | awk '{print $NF}' | head -n 1`
+  # amixer set Capture toggle
+  # send_notification $1
 esac
